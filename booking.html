@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWxncpHeylEspJ9xny3MAU4_1O7odZ5yR03g&s">
+  <meta charset="UTF-8">
+  <title>Бронювання квитків – Miromax</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .screen { text-align: center; margin: 20px auto; padding: 10px; background: #fff3; border-radius: 6px; }
+    .seats { display: grid; grid-template-columns: repeat(10, 1fr); gap: 6px; justify-content: center; max-width: 500px; margin: auto; }
+    .seat {
+      width: 40px; height: 40px; background: #fff; border-radius: 6px; cursor: pointer;
+      display: flex; justify-content: center; align-items: center; font-weight: bold;
+    }
+    .seat.selected { background: #4caf50; color: white; }
+    .seat.occupied { background: #9e9e9e; cursor: not-allowed; color: white; }
+    .info { text-align: center; margin-top: 20px; }
+
+    body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        header {
+            background-color: #111;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            color: white;
+            margin-left: 1rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 2rem;
+        }
+
+  </style>
+</head>
+
+ <header>
+        <div class="logo">Кінотеатр</div>
+        <nav>
+            <a href="index.html">Головна</a>
+           <a href="movie_controller.html">Каталог</a>
+           <a href="booking.html">Бронювання</a>
+           <a href="about.html">Про нас</a>
+        </nav>
+    </header>
+
+      <div style="text-align:left; padding:15px;">
+  <img src="images-removebg-preview.png" alt="Логотип" style="height:100px; width:100px;">
+</div>
+
+<body>
+
+  <div class="container">
+    <div style="text-align: center;">
+      <h1>🎟️ Оберіть місця</h1>
+    </div>
+    <div class="controls">
+      <select id="movieSelect"></select>
+      <select id="sessionSelect"></select>
+    </div>
+    <div class="screen">Екран</div>
+    <div class="seats" id="seats"></div>
+    <div class="info">
+      <p>Вибрано місць: <span id="count">0</span></p>
+      <p>Ціна: <span id="price">0</span> грн</p>
+      <button onclick="confirmBooking()">Підтвердити бронювання</button>
+    </div>
+  </div>
+  <script src="booking.js"></script>
+
+   <footer class="footer">
+    © Miromax Cinema, 2025 | Всі права захищені 🎞️
+  </footer>
+</body>
+</html>

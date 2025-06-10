@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWxncpHeylEspJ9xny3MAU4_1O7odZ5yR03g&s">
+  <meta charset="UTF-8" />
+  <title>Miromax – Кінотеатр</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        header {
+            background-color: #111;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            color: white;
+            margin-left: 1rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Кінотеатр</div>
+        <nav>
+            <a href="index.html">Головна</a>
+            <a href="movie_controller.html">Каталог</a>
+            <a href="booking.html">Бронювання</a>
+           <a href="about.html">Про нас</a>
+        </nav>
+    </header>
+
+  <div style="text-align:left; padding:15px;">
+  <img src="images-removebg-preview.png" alt="Логотип" style="height:100px; width:100px;">
+</div>
+
+  <h1>🎬 Кінотеатр Miromax</h1>
+  <div class="controls">
+    <input type="text" id="searchInput" placeholder="Пошук за назвою..." />
+    <select id="sortSelect">
+      <option value="">Сортувати</option>
+      <option value="title">Назва</option>
+      <option value="rating">Рейтинг</option>
+    </select>
+    <button id="addMovieBtn">+ Додати фільм</button>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Фото</th>
+        <th>Назва</th>
+        <th>Жанр</th>
+        <th>Тривалість</th>
+        <th>Рейтинг</th>
+        <th>Опис</th>
+        <th>Сеанси</th>
+        <th>Дії</th>
+      </tr>
+    </thead>
+    <tbody id="movieTableBody"></tbody>
+  </table>
+</div>
+
+<div id="movieModal" class="modal hidden">
+  <div class="modal-content">
+    <h2 id="modalTitle">Додати фільм</h2>
+    <form id="movieForm">
+      <input type="hidden" id="movieId" />
+      <label>Назва: <input type="text" id="title" required /></label><br>
+      <label>Фото (URL): <input type="url" id="image" required /></label><br>
+      <label>Жанр: <input type="text" id="genre" required /></label><br>
+      <label>Тривалість (хв): <input type="number" id="duration" required /></label><br>
+      <label>Рейтинг (0–10): <input type="number" step="0.1" min="0" max="10" id="rating" required /></label><br>
+      <label>Опис: <textarea id="description" required></textarea></label>
+      <div class="modal-actions">
+        <button type="submit">Зберегти</button>
+        <button type="button" onclick="closeModal()">Скасувати</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+<script src="app.js"></script>
+
+ <footer class="footer">
+    © Miromax Cinema, 2025 | Всі права захищені 🎞️
+  </footer>
+</body>
+</html>

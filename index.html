@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWxncpHeylEspJ9xny3MAU4_1O7odZ5yR03g&s">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Головна | Кінотеатр</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background-color: #111;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      color: white;
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      padding: 2rem;
+      flex: 1;
+    }
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 1rem 0;
+    }
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+    .carousel-item {
+      flex: 0 0 auto;
+      width: 200px;
+      border-radius: 10px;
+      background: #fff;
+      color: #000;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      text-align: center;
+      padding: 10px;
+    }
+    .carousel-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+    footer.footer {
+      text-align: center;
+      background-color: #111;
+      color: white;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Кінотеатр</div>
+    <nav>
+      <a href="index.html">Головна</a>
+      <a href="movie_controller.html">Каталог</a>
+      <a href="booking.html">Бронювання</a>
+      <a href="about.html">Про нас</a>
+    </nav>
+  </header>
+
+  <div style="text-align:left; padding:15px;">
+  <img src="images-removebg-preview.png" alt="Логотип" style="height:100px; width:100px;">
+</div>
+
+  <main>
+    <h1>Ласкаво просимо до нашого кінотеатру!</h1>
+    <p>Насолоджуйтесь останніми фільмами у зручному форматі онлайн-бронювання.</p>
+
+    <h2>Популярні фільми</h2>
+    <div class="carousel" id="carousel"></div>
+  </main>
+
+  <footer class="footer">
+    © Miromax Cinema, 2025 | Всі права захищені 🎞️ 
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const carousel = document.getElementById("carousel");
+      const movies = JSON.parse(localStorage.getItem("movies")) || [];
+
+      if (movies.length === 0) {
+        carousel.innerHTML = "<p>Немає доданих фільмів 😢</p>";
+        return;
+      }
+
+      movies.forEach(movie => {
+        const item = document.createElement("div");
+        item.className = "carousel-item";
+        item.innerHTML = `
+          <img src="${movie.image}" alt="${movie.title}">
+          <h4>${movie.title}</h4>
+          <p>⭐ ${movie.rating}/10</p>
+        `;
+        carousel.appendChild(item);
+      });
+    });
+  </script>
+
+</body>
+</html>
