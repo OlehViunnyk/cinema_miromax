@@ -123,6 +123,40 @@
     }
 
 
+ .nav-buttons a::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.2);
+        transition: all 0.4s ease;
+        transform: skewX(-45deg);
+    }
+    .nav-buttons a:hover::before {
+        left: 100%;
+    }
+    .nav-buttons a:hover {
+        background-color: #444;
+        transform: translateY(-2px);
+    }
+    main {
+        padding: 2rem;
+    }
+    .footer {
+        text-align: center;
+        padding: 1rem;
+        background-color: #111;
+        color: white;
+        margin-top: 2rem;
+    }
+    .social-icons img {
+        width: 32px;
+        height: 32px;
+        margin-right: 10px;
+    }
+
     .logo-img {
   height: 100px;
   width: 100px;
@@ -134,7 +168,7 @@
   transform: scale(1.1);
 }
 
-  .logo-text {
+.logo-text {
   background-color: #222;
   color: #fff;
   padding: 10px 25px;
