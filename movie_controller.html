@@ -5,104 +5,224 @@
   <meta charset="UTF-8" />
   <title>Miromax – Кінотеатр</title>
   <link rel="stylesheet" href="style.css">
-</head>
-<body>
   <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
-        }
-        header {
-            background-color: #111;
-            color: white;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        nav a {
-            color: white;
-            margin-left: 1rem;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        main {
-            padding: 2rem;
-        }
-    </style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    header {
+      background-color: #111;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav.nav-buttons a {
+      background-color: #222;
+      color: #fff;
+      padding: 10px 20px;
+      margin-left: 10px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+    }
+    nav.nav-buttons a::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: all 0.4s ease;
+      transform: skewX(-45deg);
+    }
+    nav.nav-buttons a:hover::before {
+      left: 100%;
+    }
+    nav.nav-buttons a:hover {
+      background-color: #444;
+      transform: translateY(-2px);
+    }
+    main {
+      padding: 2rem;
+    }
+    .controls {
+      margin: 20px 0;
+    }
+    input, select, button {
+      margin-right: 10px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal.hidden {
+      display: none;
+    }
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+    }
+    .modal-content label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    .modal-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    footer.footer {
+      text-align: center;
+      background-color: #111;
+      color: white;
+      padding: 1rem;
+      margin-top: 50px;
+    }
+
+
+    .logo-img {
+  height: 100px;
+  width: 100px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.logo-img:hover {
+  transform: scale(1.1);
+}
+
+  .logo-text {
+  background-color: #222;
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-left: -15px; 
+}
+
+
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo">Кінотеатр</div>
-        <nav>
-            <a href="index.html">Головна</a>
-            <a href="movie_controller.html">Каталог</a>
-            <a href="booking.html">Бронювання</a>
-           <a href="about.html">Про нас</a>
-        </nav>
-    </header>
 
-  <div style="text-align:left; padding:15px;">
-  <img src="images-removebg-preview.png" alt="Логотип" style="height:100px; width:100px;">
+  <header>
+  <div class="logo-text">Кінотеатр Miromax</div>
+  <nav class="nav-buttons">
+    <a href="index.html">Головна</a>
+    <a href="movie_controller.html">Каталог</a>
+    <a href="booking.html">Бронювання</a>
+    <a href="about.html">Про нас</a>
+  </nav>
+</header>
+  </header>
+
+    <div style="text-align:left; padding:15px;">
+  <a href="index.html">
+    <img src="images-removebg-preview.png" alt="Логотип" class="logo-img">
+  </a>
 </div>
 
-  <h1>🎬 Кінотеатр Miromax</h1>
-  <div class="controls">
-    <input type="text" id="searchInput" placeholder="Пошук за назвою..." />
-    <select id="sortSelect">
-      <option value="">Сортувати</option>
-      <option value="title">Назва</option>
-      <option value="rating">Рейтинг</option>
-    </select>
-    <button id="addMovieBtn">+ Додати фільм</button>
+  <main>
+    <h1>🎬 Кінотеатр Miromax</h1>
+
+    <div class="controls">
+      <input type="text" id="searchInput" placeholder="Пошук за назвою..." />
+      <select id="sortSelect">
+        <option value="">Сортувати</option>
+        <option value="title">Назва</option>
+        <option value="rating">Рейтинг</option>
+      </select>
+      <button id="addMovieBtn">+ Додати фільм</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Фото</th>
+          <th>Назва</th>
+          <th>Жанр</th>
+          <th>Тривалість</th>
+          <th>Рейтинг</th>
+          <th>Опис</th>
+          <th>Сеанси</th>
+          <th>Дії</th>
+        </tr>
+      </thead>
+      <tbody id="movieTableBody"></tbody>
+    </table>
+  </main>
+
+  <div id="movieModal" class="modal hidden">
+    <div class="modal-content">
+      <h2 id="modalTitle">Додати фільм</h2>
+      <form id="movieForm">
+        <input type="hidden" id="movieId" />
+        <label>Назва: <input type="text" id="title" required /></label>
+        <label>Фото (URL): <input type="url" id="image" required /></label>
+        <label>Жанр: <input type="text" id="genre" required /></label>
+        <label>Тривалість (хв): <input type="number" id="duration" required /></label>
+        <label>Рейтинг (0–10): <input type="number" step="0.1" min="0" max="10" id="rating" required /></label>
+        <label>Опис: <textarea id="description" required></textarea></label>
+        <div class="modal-actions">
+          <button type="submit">Зберегти</button>
+          <button type="button" onclick="closeModal()">Скасувати</button>
+        </div>
+      </form>
+    </div>
   </div>
-  <table>
-    <thead>
-      <tr>
-        <th>Фото</th>
-        <th>Назва</th>
-        <th>Жанр</th>
-        <th>Тривалість</th>
-        <th>Рейтинг</th>
-        <th>Опис</th>
-        <th>Сеанси</th>
-        <th>Дії</th>
-      </tr>
-    </thead>
-    <tbody id="movieTableBody"></tbody>
-  </table>
-</div>
 
-<div id="movieModal" class="modal hidden">
-  <div class="modal-content">
-    <h2 id="modalTitle">Додати фільм</h2>
-    <form id="movieForm">
-      <input type="hidden" id="movieId" />
-      <label>Назва: <input type="text" id="title" required /></label><br>
-      <label>Фото (URL): <input type="url" id="image" required /></label><br>
-      <label>Жанр: <input type="text" id="genre" required /></label><br>
-      <label>Тривалість (хв): <input type="number" id="duration" required /></label><br>
-      <label>Рейтинг (0–10): <input type="number" step="0.1" min="0" max="10" id="rating" required /></label><br>
-      <label>Опис: <textarea id="description" required></textarea></label>
-      <div class="modal-actions">
-        <button type="submit">Зберегти</button>
-        <button type="button" onclick="closeModal()">Скасувати</button>
-      </div>
-    </form>
-  </div>
-</div>
+  <script src="app.js"></script>
 
-
-
-<script src="app.js"></script>
-
- <footer class="footer">
+  <footer class="footer">
     © Miromax Cinema, 2025 | Всі права захищені 🎞️
   </footer>
+
 </body>
 </html>
+
